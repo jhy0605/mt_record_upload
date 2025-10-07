@@ -1,0 +1,352 @@
+2024-03-01 22:05:15,604 [ERROR] - An error occurred: Message: disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0040A813+48355]
+	(No symbol) [0x0039C4B1]
+	(No symbol) [0x002A5358]
+	(No symbol) [0x002970EB]
+	(No symbol) [0x002977AA]
+	(No symbol) [0x00297748]
+	(No symbol) [0x0028C2AA]
+	(No symbol) [0x0028CB1D]
+	(No symbol) [0x002F27B8]
+	(No symbol) [0x002EA703]
+	(No symbol) [0x002C82DC]
+	(No symbol) [0x002C93DD]
+	GetHandleVerifier [0x0066AABD+2539405]
+	GetHandleVerifier [0x006AA78F+2800735]
+	GetHandleVerifier [0x006A456C+2775612]
+	GetHandleVerifier [0x004951E0+616112]
+	(No symbol) [0x003A5F8C]
+	(No symbol) [0x003A2328]
+	(No symbol) [0x003A240B]
+	(No symbol) [0x00394FF7]
+	BaseThreadInitThunk [0x767F05C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77E078BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77E0788D+189]
+
+2024-03-01 22:05:15,605 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 173, in record_down
+    browser.close()  # ¹Ø±Õä¯ÀÀÆ÷
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in close
+    self.execute(Command.CLOSE)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: disconnected: not connected to DevTools
+  (failed to check if window was closed: disconnected: not connected to DevTools)
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0040A813+48355]
+	(No symbol) [0x0039C4B1]
+	(No symbol) [0x002A5358]
+	(No symbol) [0x002970EB]
+	(No symbol) [0x002977AA]
+	(No symbol) [0x00297748]
+	(No symbol) [0x0028C2AA]
+	(No symbol) [0x0028CB1D]
+	(No symbol) [0x002F27B8]
+	(No symbol) [0x002EA703]
+	(No symbol) [0x002C82DC]
+	(No symbol) [0x002C93DD]
+	GetHandleVerifier [0x0066AABD+2539405]
+	GetHandleVerifier [0x006AA78F+2800735]
+	GetHandleVerifier [0x006A456C+2775612]
+	GetHandleVerifier [0x004951E0+616112]
+	(No symbol) [0x003A5F8C]
+	(No symbol) [0x003A2328]
+	(No symbol) [0x003A240B]
+	(No symbol) [0x00394FF7]
+	BaseThreadInitThunk [0x767F05C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77E078BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77E0788D+189]
+
+
+2024-03-06 14:21:13,102 [ERROR] - An error occurred: Message: 
+
+2024-03-06 14:21:13,110 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 97, in record_down
+    WebDriverWait(browser, 20).until(
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2024-04-21 14:20:53,057 [ERROR] - An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0025A813+48355]
+	(No symbol) [0x001EC4B1]
+	(No symbol) [0x000F5358]
+	(No symbol) [0x000DD293]
+	(No symbol) [0x0013E37B]
+	(No symbol) [0x0014C473]
+	(No symbol) [0x0013A536]
+	(No symbol) [0x001182DC]
+	(No symbol) [0x001193DD]
+	GetHandleVerifier [0x004BAABD+2539405]
+	GetHandleVerifier [0x004FA78F+2800735]
+	GetHandleVerifier [0x004F456C+2775612]
+	GetHandleVerifier [0x002E51E0+616112]
+	(No symbol) [0x001F5F8C]
+	(No symbol) [0x001F2328]
+	(No symbol) [0x001F240B]
+	(No symbol) [0x001E4FF7]
+	BaseThreadInitThunk [0x762C05C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77D078BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77D0788D+189]
+	(No symbol) [0x00000000]
+
+2024-04-21 14:20:53,059 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 173, in record_down
+    tag_name = WebDriverWait(browser, 20).until(
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\wait.py", line 86, in until
+    value = method(self._driver)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 204, in _predicate
+    elements = driver.find_elements(*locator)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 860, in find_elements
+    return self.execute(Command.FIND_ELEMENTS, {"using": by, "value": value})["value"] or []
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x0025A813+48355]
+	(No symbol) [0x001EC4B1]
+	(No symbol) [0x000F5358]
+	(No symbol) [0x000DD293]
+	(No symbol) [0x0013E37B]
+	(No symbol) [0x0014C473]
+	(No symbol) [0x0013A536]
+	(No symbol) [0x001182DC]
+	(No symbol) [0x001193DD]
+	GetHandleVerifier [0x004BAABD+2539405]
+	GetHandleVerifier [0x004FA78F+2800735]
+	GetHandleVerifier [0x004F456C+2775612]
+	GetHandleVerifier [0x002E51E0+616112]
+	(No symbol) [0x001F5F8C]
+	(No symbol) [0x001F2328]
+	(No symbol) [0x001F240B]
+	(No symbol) [0x001E4FF7]
+	BaseThreadInitThunk [0x762C05C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77D078BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77D0788D+189]
+	(No symbol) [0x00000000]
+
+
+2024-05-17 17:25:46,508 [ERROR] - An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x012AA813+48355]
+	(No symbol) [0x0123C4B1]
+	(No symbol) [0x01145358]
+	(No symbol) [0x0112D293]
+	(No symbol) [0x0118E37B]
+	(No symbol) [0x0119C473]
+	(No symbol) [0x0118A536]
+	(No symbol) [0x011682DC]
+	(No symbol) [0x011693DD]
+	GetHandleVerifier [0x0150AABD+2539405]
+	GetHandleVerifier [0x0154A78F+2800735]
+	GetHandleVerifier [0x0154456C+2775612]
+	GetHandleVerifier [0x013351E0+616112]
+	(No symbol) [0x01245F8C]
+	(No symbol) [0x01242328]
+	(No symbol) [0x0124240B]
+	(No symbol) [0x01234FF7]
+	BaseThreadInitThunk [0x76A205C9+25]
+	RtlGetAppContainerNamedObjectPath [0x777478BD+237]
+	RtlGetAppContainerNamedObjectPath [0x7774788D+189]
+
+2024-05-17 17:25:46,511 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 115, in record_down
+    WebDriverWait(browser, 20).until(
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\wait.py", line 86, in until
+    value = method(self._driver)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 139, in _predicate
+    return _element_if_visible(driver.find_element(*locator))
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 830, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x012AA813+48355]
+	(No symbol) [0x0123C4B1]
+	(No symbol) [0x01145358]
+	(No symbol) [0x0112D293]
+	(No symbol) [0x0118E37B]
+	(No symbol) [0x0119C473]
+	(No symbol) [0x0118A536]
+	(No symbol) [0x011682DC]
+	(No symbol) [0x011693DD]
+	GetHandleVerifier [0x0150AABD+2539405]
+	GetHandleVerifier [0x0154A78F+2800735]
+	GetHandleVerifier [0x0154456C+2775612]
+	GetHandleVerifier [0x013351E0+616112]
+	(No symbol) [0x01245F8C]
+	(No symbol) [0x01242328]
+	(No symbol) [0x0124240B]
+	(No symbol) [0x01234FF7]
+	BaseThreadInitThunk [0x76A205C9+25]
+	RtlGetAppContainerNamedObjectPath [0x777478BD+237]
+	RtlGetAppContainerNamedObjectPath [0x7774788D+189]
+
+
+2024-06-20 12:53:15,543 [ERROR] - An error occurred: list index out of range
+2024-06-20 12:53:15,544 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 77, in record_down
+    browser.find_elements(By.TAG_NAME, 'input')[1].send_keys(self.web_user)
+IndexError: list index out of range
+
+2024-10-28 13:36:34,067 [ERROR] - An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x015AA813+48355]
+	(No symbol) [0x0153C4B1]
+	(No symbol) [0x01445358]
+	(No symbol) [0x0142D293]
+	(No symbol) [0x0148E37B]
+	(No symbol) [0x0149C473]
+	(No symbol) [0x0148A536]
+	(No symbol) [0x014682DC]
+	(No symbol) [0x014693DD]
+	GetHandleVerifier [0x0180AABD+2539405]
+	GetHandleVerifier [0x0184A78F+2800735]
+	GetHandleVerifier [0x0184456C+2775612]
+	GetHandleVerifier [0x016351E0+616112]
+	(No symbol) [0x01545F8C]
+	(No symbol) [0x01542328]
+	(No symbol) [0x0154240B]
+	(No symbol) [0x01534FF7]
+	BaseThreadInitThunk [0x775105C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB78BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77CB788D+189]
+
+2024-10-28 13:36:34,069 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 108, in record_down
+    browser.find_elements(By.TAG_NAME, 'input')[1].send_keys(self.web_user)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 860, in find_elements
+    return self.execute(Command.FIND_ELEMENTS, {"using": by, "value": value})["value"] or []
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x015AA813+48355]
+	(No symbol) [0x0153C4B1]
+	(No symbol) [0x01445358]
+	(No symbol) [0x0142D293]
+	(No symbol) [0x0148E37B]
+	(No symbol) [0x0149C473]
+	(No symbol) [0x0148A536]
+	(No symbol) [0x014682DC]
+	(No symbol) [0x014693DD]
+	GetHandleVerifier [0x0180AABD+2539405]
+	GetHandleVerifier [0x0184A78F+2800735]
+	GetHandleVerifier [0x0184456C+2775612]
+	GetHandleVerifier [0x016351E0+616112]
+	(No symbol) [0x01545F8C]
+	(No symbol) [0x01542328]
+	(No symbol) [0x0154240B]
+	(No symbol) [0x01534FF7]
+	BaseThreadInitThunk [0x775105C9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB78BD+237]
+	RtlGetAppContainerNamedObjectPath [0x77CB788D+189]
+
+
+2024-11-02 16:07:31,337 [ERROR] - An error occurred: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x005FA813+48355]
+	(No symbol) [0x0058C4B1]
+	(No symbol) [0x00495358]
+	(No symbol) [0x0047D293]
+	(No symbol) [0x004DE37B]
+	(No symbol) [0x004EC473]
+	(No symbol) [0x004DA536]
+	(No symbol) [0x004B82DC]
+	(No symbol) [0x004B93DD]
+	GetHandleVerifier [0x0085AABD+2539405]
+	GetHandleVerifier [0x0089A78F+2800735]
+	GetHandleVerifier [0x0089456C+2775612]
+	GetHandleVerifier [0x006851E0+616112]
+	(No symbol) [0x00595F8C]
+	(No symbol) [0x00592328]
+	(No symbol) [0x0059240B]
+	(No symbol) [0x00584FF7]
+	BaseThreadInitThunk [0x74F805C9+25]
+	RtlGetAppContainerNamedObjectPath [0x771778BD+237]
+	RtlGetAppContainerNamedObjectPath [0x7717788D+189]
+
+2024-11-02 16:07:31,339 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 108, in record_down
+    browser.find_elements(By.TAG_NAME, 'input')[1].send_keys(self.web_user)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 860, in find_elements
+    return self.execute(Command.FIND_ELEMENTS, {"using": by, "value": value})["value"] or []
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 440, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 245, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.91)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x005FA813+48355]
+	(No symbol) [0x0058C4B1]
+	(No symbol) [0x00495358]
+	(No symbol) [0x0047D293]
+	(No symbol) [0x004DE37B]
+	(No symbol) [0x004EC473]
+	(No symbol) [0x004DA536]
+	(No symbol) [0x004B82DC]
+	(No symbol) [0x004B93DD]
+	GetHandleVerifier [0x0085AABD+2539405]
+	GetHandleVerifier [0x0089A78F+2800735]
+	GetHandleVerifier [0x0089456C+2775612]
+	GetHandleVerifier [0x006851E0+616112]
+	(No symbol) [0x00595F8C]
+	(No symbol) [0x00592328]
+	(No symbol) [0x0059240B]
+	(No symbol) [0x00584FF7]
+	BaseThreadInitThunk [0x74F805C9+25]
+	RtlGetAppContainerNamedObjectPath [0x771778BD+237]
+	RtlGetAppContainerNamedObjectPath [0x7717788D+189]
+
+
+2024-11-07 14:56:23,961 [ERROR] - An error occurred: Message: 
+
+2024-11-07 14:56:23,963 [ERROR] - Traceback (most recent call last):
+  File "D:\BaiduSyncdisk\python\develop\mt_record_upload\record_download.py", line 207, in record_down
+    tag_name = WebDriverWait(browser, 20).until(
+  File "D:\software\python\python 3.10.10\lib\site-packages\selenium\webdriver\support\wait.py", line 95, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+

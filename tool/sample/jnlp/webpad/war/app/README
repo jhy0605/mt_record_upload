@@ -1,0 +1,21 @@
+# ===========================================================================
+#  Licensed Materials - Property of IBM
+#  "Restricted Materials of IBM"
+#  
+#  IBM SDK, Java(tm) Technology Edition, v8
+#  (C) Copyright IBM Corp. 2014, 2020. All Rights Reserved
+# 
+#  US Government Users Restricted Rights - Use, duplication or disclosure
+#  restricted by GSA ADP Schedule Contract with IBM Corp.
+# ===========================================================================
+Please put the following two files in this directory:
+
+holidays.jar
+jh.jar
+
+You can download them from http://java.sun.com/products/javahelp
+
+and rename them to:
+
+holidays__V1.0.jar
+jh__V1.0.jar

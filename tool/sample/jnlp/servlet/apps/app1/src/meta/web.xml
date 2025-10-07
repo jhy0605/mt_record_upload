@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--===========================================================================
+  - Licensed Materials - Property of IBM
+  - "Restricted Materials of IBM"
+  - 
+  - IBM SDK, Java(tm) Technology Edition, v8
+  - (C) Copyright IBM Corp. 2014, 2020. All Rights Reserved
+  -
+  - US Government Users Restricted Rights - Use, duplication or disclosure
+  - restricted by GSA ADP Schedule Contract with IBM Corp.
+  -===========================================================================
+-->
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+</web-app>

@@ -1,0 +1,1 @@
+bin\java -jar tool.jar º”√‹ D:\source.txt
