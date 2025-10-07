@@ -849,6 +849,165 @@ class line_download:
         return list_all
 
 
+# 获取瑛飞诺的录音
+class yfn_download:
+    def __init__(self, name):
+        # 文件存放信息
+        self.down_path = None
+        self.str_time = ''
+
+        # 当前时间
+        self.date_d = datetime.datetime.utcnow()
+        self.date_x = self.date_d.strftime("%Y-%m-%d")
+        self.time_x = self.date_d.strftime("%H:%M:%S")
+
+        # 登录信息
+        self.url = r'http://www.yfnsh.com/service/index.php?'
+        self.user = 'admin'
+        self.passwd = 'ff9ae643d90a822bf4d6bf4ee2ec4451bc0059b77d443177ada879ae65c71ec324313f65965934f14e250f1f8df0e3d8a5f3912a3c13eb77cc740bff23a41dcc'
+
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/140.0.7339.208 Safari/537.36',
+            'Accept-Language': 'zh-CN,zh;q=0.9',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
+        self.my_data = {"userName": self.user, "password": self.passwd, "rememberMe": 'false',
+                        "customerName": name, 'client': '2560*1440'}
+
+    # 登录网页,获取cookie
+    def login(self):
+        # 模拟请求，获响应头
+        try:
+            res_cookie = requests.post(self.url + 'm=index&c=index&f=checkLogin', headers=self.headers)
+        except Exception as k:
+            print(k)
+            Dingding_Warning('严重', '网络访问错误', k)
+            return None
+        if res_cookie.status_code != 200:
+            print(res_cookie.text)
+            Dingding_Warning('严重', '网络访问错误', res_cookie.text)
+            return None
+        else:
+            login_cookie = res_cookie.headers.get("Set-Cookie").split(',')[1].replace(' ', '')
+            # print(login_cookie)
+
+            # 模拟请求获取 PHPSESSID
+            res_ssid = requests.post(self.url + 'm=login&c=login', headers=self.headers)
+            php_sessid = res_ssid.headers.get("Set-Cookie").split(';')[0].replace(' ', '')
+            # print(php_sessid)
+
+            # 模拟登录,获取最终cookie
+            self.headers['Cookie'] = login_cookie + ';' + php_sessid
+            res_login = requests.post(self.url + 'm=login&c=login&f=login', headers=self.headers, data=self.my_data)
+            news = json.loads(res_login.text)['result']['error']
+            if news == 0:
+                print('瑛飞诺呼叫系统，用户登录成功')
+                cookie = res_login.headers.get("Set-Cookie")
+                # print(cookie)
+                return cookie
+
+            else:
+                print('用户登录失败：{}'.format(res_login.text))
+                Dingding_Warning('严重', '用户登录失败', res_login.text)
+                return None
+
+    # 按照日期搜索通话记录,输出搜索结果
+    def search_record(self, cookie):
+        call_list = []
+
+        # 根据时间区间计算时间戳
+        end_date = datetime.datetime.strptime(self.str_time, "%Y%m%d%H%M%S")
+
+        yesterday = end_date - datetime.timedelta(days=3)
+        start_date = datetime.datetime.strptime(yesterday.date().strftime('%Y-%m-%d ') + '00:00:00',
+                                                "%Y-%m-%d %H:%M:%S")
+
+        print('开始下载{} 至 {}的瑛飞诺录音'.format(start_date, end_date))
+
+        start_time = int(time.mktime(start_date.timetuple()))
+        end_time = int(time.mktime(end_date.timetuple()))
+
+        # 搜索美团班组的录音
+        query_data = 'p={"pagination":{"current":1,"pageSize":9999999},"sorter":{},' \
+                     '"filter":{"employeeGroupID":"3686","employeeID":[],"caller":"","callee":"","CID":"","taskID":"",' \
+                     '"timeLengthSetting":"4","hasAnswer":"0","qcStatus":"-1","Time":"5","qcTime":0,' \
+                     '"startTime":"%s","endTime":"%s","qcStartTime":"","qcEndTime":"",' \
+                     '"timestamp":"%s}T%s.367Z"}}' % (start_time, end_time, self.date_x, self.time_x)
+        self.headers['Cookie'] = cookie
+        res_query = requests.post(self.url + 'm=cdr&c=record&f=query', headers=self.headers, data=query_data)
+        res_text = res_query.text  # 返回值
+        dick_all = json.loads(res_text)  # 反序列化
+        # print(dick_all)
+        quantity = dick_all['data']['total']  # 录音数量
+        print('搜索成功,录音数量：{}'.format(quantity))
+
+        for call in dick_all['data']['rows']:
+            print(call)
+            key = call['key']
+            date = call['startTime'].replace('-', '').replace(' ', '').replace(':', '')
+            caller = call['caller']
+            callerd = call['callee']
+            start_stamp = call['startTime']
+            end_stamp = call['endTime']
+            duration = int(call['timeLength'])
+            file = date[0:8] + '_' + date[8:] + '_' + callerd + '_' + caller + '.mp3'
+            # print(file)
+            path_dirs = os.path.join(self.down_path, date[0:6], date[6:8])
+
+            download_value = [key, os.path.join(path_dirs, file)]
+            # print(download_value)
+
+            call_value = [start_stamp, caller, callerd, start_stamp, end_stamp, duration, path_dirs, file]
+            # print(call_value)
+
+            call_list.append([download_value, call_value])
+
+        return call_list
+
+    # 根据key值，进行录音下载
+    def get_record(self, download_value):
+        key = 'id=' + download_value[0]
+        filepath = download_value[1]
+        dir_path = os.path.split(filepath)[0]  # 录音存放目录
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        if not os.path.exists(filepath):
+            res_download = requests.post(self.url + 'm=cdr&c=record&f=downloadOne', headers=self.headers,
+                                         data=key)
+            if res_download.status_code == 200:
+                with open(filepath, 'wb') as f:
+                    f.write(res_download.content)
+                    f.close()
+                print('get:' + filepath)
+                return True
+            else:
+                print(res_download.text)
+                return None
+        else:
+            return True
+
+    # 下载录音
+    def run(self):
+        fr_record_list = []
+        cookie = yfn_download.login(self)
+        if cookie:
+            call_list = yfn_download.search_record(self, cookie)
+            if len(call_list) > 0:
+                for call in call_list:
+                    if yfn_download.get_record(self, call[0]):  # 下载录音
+                        value = call[1]
+                        if value[1][0] == '1':  # 判断哪个是客户号码
+                            phone = value[1]
+                        else:
+                            phone = value[2]
+                        # 特殊的手机号码处理
+                        if len(phone) == 12 and phone[0:2] == '01':
+                            phone = phone[1:]
+                        fr_record_list.append([value[7], value[0], phone, value[6], 'yfn'])
+        return fr_record_list
+
+
 # 下载录音，将记录插入数据库
 def record_download(date, download_path):
     record_list = []
@@ -886,11 +1045,12 @@ def record_download(date, download_path):
     okcc.str_time = date  # 定义时间参数
     record_list += okcc.select_record_list()
 
-    # 读取联通固话录音
-    # line = line_download()
-    # line.down_path = os.path.join(download_path, r'联通')  # 录音存放位置
-    # line.str_time = date
-    # record_list += line.select_line_list()
+    # 读取瑛飞诺录音
+    for name in ['B金湾1', 'B金湾2', 'B金湾3']:
+        yfn = yfn_download(name)
+        yfn.down_path = os.path.join(download_path, r'瑛飞诺')  # 录音存放位置
+        yfn.str_time = date
+        record_list += yfn.run()
 
     # 读取共享盘里面的录音
     shar = shar_records()
@@ -901,4 +1061,3 @@ def record_download(date, download_path):
     open_sql().logs(record_list)
 
     return record_list
-
